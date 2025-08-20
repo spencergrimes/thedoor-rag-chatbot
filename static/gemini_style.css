@@ -1,0 +1,348 @@
+/* Gemini-Style CSS for The Door RAG Chatbot */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap');
+
+/* CSS Variables - Gemini Color Palette */
+:root {
+    --primary-blue: #1a73e8;
+    --light-blue: #e8f0fe;
+    --hover-blue: #1557b0;
+    --text-primary: #202124;
+    --text-secondary: #5f6368;
+    --text-tertiary: #80868b;
+    --background: #fafafa;
+    --surface: #ffffff;
+    --surface-variant: #f8f9fa;
+    --border: #e8eaed;
+    --border-light: #f1f3f4;
+    --shadow-small: 0 1px 3px rgba(60,64,67,.3);
+    --shadow-medium: 0 1px 6px rgba(32,33,36,.28);
+    --shadow-large: 0 4px 12px rgba(0,0,0,.15);
+    --border-radius: 12px;
+    --border-radius-large: 16px;
+    --transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Main App Styling */
+.main .block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    max-width: 900px;
+}
+
+/* Hide Streamlit default elements */
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+.stDeployButton {display: none;}
+
+/* App Header */
+.app-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem 0;
+    background: linear-gradient(135deg, var(--surface) 0%, var(--surface-variant) 100%);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-small);
+}
+
+.app-title {
+    font-family: 'Google Sans', 'Inter', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: 0;
+    letter-spacing: -0.025em;
+}
+
+.app-subtitle {
+    font-family: 'Google Sans', 'Inter', sans-serif;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+    font-weight: 400;
+}
+
+/* Chat Container */
+.chat-container {
+    background: var(--surface);
+    border-radius: var(--border-radius-large);
+    padding: 1.5rem;
+    margin: 1rem 0;
+    box-shadow: var(--shadow-medium);
+    border: 1px solid var(--border);
+}
+
+/* Message Styling */
+.chat-message {
+    border-radius: var(--border-radius);
+    padding: 1rem 1.25rem;
+    margin: 0.75rem 0;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+    box-shadow: var(--shadow-small);
+    transition: var(--transition);
+    animation: fadeInUp 0.3s ease-out;
+}
+
+.user-message {
+    background: var(--primary-blue);
+    color: white;
+    margin-left: 15%;
+    border-bottom-right-radius: 6px;
+}
+
+.assistant-message {
+    background: var(--surface-variant);
+    color: var(--text-primary);
+    margin-right: 15%;
+    border: 1px solid var(--border-light);
+    border-bottom-left-radius: 6px;
+}
+
+.message-content {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* Suggested Prompts */
+.prompt-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+    justify-content: center;
+}
+
+.prompt-chip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    font-family: 'Google Sans', sans-serif;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+    box-shadow: var(--shadow-small);
+}
+
+.prompt-chip:hover {
+    background: var(--light-blue);
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* Input Area */
+.input-container {
+    background: var(--surface);
+    border-radius: var(--border-radius-large);
+    padding: 1rem;
+    margin-top: 1rem;
+    box-shadow: var(--shadow-medium);
+    border: 1px solid var(--border);
+}
+
+/* Sidebar Styling */
+.sidebar .sidebar-content {
+    background: var(--surface);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    margin: 0.5rem 0;
+    box-shadow: var(--shadow-small);
+}
+
+/* Response Actions */
+.response-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    align-items: center;
+}
+
+.action-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.action-btn:hover {
+    background: var(--surface-variant);
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+}
+
+/* Source Citations */
+.sources-container {
+    background: var(--surface-variant);
+    border-radius: var(--border-radius);
+    padding: 0.75rem;
+    margin-top: 0.75rem;
+    border: 1px solid var(--border-light);
+}
+
+.source-item {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 0.875rem;
+}
+
+.source-item:last-child {
+    border-bottom: none;
+}
+
+.source-title {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.source-confidence {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+/* Confidence Indicator */
+.confidence-badge {
+    display: inline-flex;
+    align-items: center;
+    background: var(--light-blue);
+    color: var(--primary-blue);
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-left: 0.5rem;
+}
+
+/* Loading Animation */
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    padding: 0.5rem 0;
+}
+
+.typing-dots {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.typing-dot {
+    width: 4px;
+    height: 4px;
+    background: var(--text-secondary);
+    border-radius: 50%;
+    animation: typingDot 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes typingDot {
+    0%, 80%, 100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .user-message {
+        margin-left: 5%;
+    }
+    
+    .assistant-message {
+        margin-right: 5%;
+    }
+    
+    .prompt-chips {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .prompt-chip {
+        width: 100%;
+        text-align: center;
+        max-width: 300px;
+    }
+    
+    .app-title {
+        font-size: 2rem;
+    }
+}
+
+/* Streamlit Element Overrides */
+.stTextInput > div > div > input {
+    border-radius: var(--border-radius) !important;
+    border: 1px solid var(--border) !important;
+    font-family: 'Inter', sans-serif !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 0.95rem !important;
+}
+
+.stTextInput > div > div > input:focus {
+    border-color: var(--primary-blue) !important;
+    box-shadow: 0 0 0 2px var(--light-blue) !important;
+}
+
+.stButton > button {
+    background: var(--primary-blue) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: var(--border-radius) !important;
+    padding: 0.75rem 1.5rem !important;
+    font-family: 'Google Sans', sans-serif !important;
+    font-weight: 500 !important;
+    transition: var(--transition) !important;
+}
+
+.stButton > button:hover {
+    background: var(--hover-blue) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: var(--shadow-medium) !important;
+}
+
+/* Selectbox Styling */
+.stSelectbox > div > div > div {
+    border-radius: var(--border-radius) !important;
+    border: 1px solid var(--border) !important;
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* Expander Styling */
+.streamlit-expanderHeader {
+    background: var(--surface-variant) !important;
+    border-radius: var(--border-radius) !important;
+    border: 1px solid var(--border-light) !important;
+    font-family: 'Google Sans', sans-serif !important;
+}
