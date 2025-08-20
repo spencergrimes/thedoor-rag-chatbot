@@ -18,18 +18,16 @@ st.set_page_config(
 )
 
 @st.cache_resource
-def initialize_rag_system():
-    vector_store = VectorStore(
+def get_vector_store():
+    """Get the vector store (cached)"""
+    return VectorStore(
         db_path=Config.VECTOR_DB_PATH,
         embedding_model=Config.EMBEDDING_MODEL
     )
-    
-    # Choose LLM based on availability
-    llm_choice = st.sidebar.selectbox(
-        "Choose LLM:",
-        ["Ollama (Free)", "OpenAI (Paid)"],
-        index=0
-    )
+
+def initialize_rag_system(llm_choice: str):
+    """Initialize RAG system based on LLM choice"""
+    vector_store = get_vector_store()
     
     if llm_choice == "Ollama (Free)":
         try:
@@ -57,7 +55,14 @@ def main():
     st.title("🏛️ The Door Church Chatbot")
     st.markdown("Ask me anything about The Door church in Maple Grove, MN!")
     
-    retriever = initialize_rag_system()
+    # Choose LLM based on availability (widget outside cached function)
+    llm_choice = st.sidebar.selectbox(
+        "Choose LLM:",
+        ["Ollama (Free)", "OpenAI (Paid)"],
+        index=0
+    )
+    
+    retriever = initialize_rag_system(llm_choice)
     
     if "messages" not in st.session_state:
         st.session_state.messages = [
