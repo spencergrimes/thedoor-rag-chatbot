@@ -50,7 +50,7 @@ Web Scraping → Text Processing → Vector Embeddings → Semantic Search → L
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/thedoor-rag-chatbot.git
+   git clone https://github.com/spencergrimes/thedoor-rag-chatbot.git
    cd thedoor-rag-chatbot
    ```
 
