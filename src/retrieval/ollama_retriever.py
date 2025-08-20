@@ -4,7 +4,7 @@ import requests
 import json
 
 class OllamaRAGRetriever:
-    def __init__(self, vector_store: VectorStore, model: str = "llama3.2:1b"):
+    def __init__(self, vector_store: VectorStore, model: str = "gemma:2b"):
         self.vector_store = vector_store
         self.model = model
         self.base_url = "http://localhost:11434"
