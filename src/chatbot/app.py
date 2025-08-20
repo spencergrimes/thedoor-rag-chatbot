@@ -250,14 +250,7 @@ def main():
     # Main search container
     st.markdown('<div class="search-results">', unsafe_allow_html=True)
     
-    # Search input with Google-style design
-    st.markdown("""
-    <div class="search-container">
-        <div class="search-icon">🔍</div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # Get search query
+    # Get search query with integrated search icon
     query = st.text_input(
         "Search The Door church...",
         placeholder="What would you like to know about The Door church?",
