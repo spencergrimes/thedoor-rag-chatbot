@@ -44,12 +44,12 @@ Question: {query}
 
 Please provide a helpful answer based on the context above."""
         
+        # Combine system and user prompts for generate API
+        full_prompt = f"{system_prompt}\n\n{user_prompt}"
+        
         payload = {
             "model": self.model,
-            "messages": [
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt}
-            ],
+            "prompt": full_prompt,
             "stream": False,
             "options": {
                 "temperature": 0.7,
@@ -59,14 +59,14 @@ Please provide a helpful answer based on the context above."""
         
         try:
             response = requests.post(
-                f"{self.base_url}/api/chat",
+                f"{self.base_url}/api/generate",
                 json=payload,
                 timeout=30
             )
             
             if response.status_code == 200:
                 result = response.json()
-                return result['message']['content']
+                return result['response']
             else:
                 return f"Error from Ollama: {response.status_code}"
                 
